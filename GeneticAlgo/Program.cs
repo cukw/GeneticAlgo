@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,7 +36,7 @@ namespace GeneticAlgorithm
         }
 
         // Мутация особи
-        void Mutate(List<int> individual, double mutationRate)
+        public static void Mutate(List<int> individual, double mutationRate)
         {
             for (int i = 0; i < individual.Count; i++)
             {
@@ -45,7 +45,7 @@ namespace GeneticAlgorithm
             }
         }
 
-        static void Muin(string[] args)
+        static void Main(string[] args)
         {
             double populationSize = 100;
             int individualLength = 10;
@@ -53,7 +53,7 @@ namespace GeneticAlgorithm
             int generations = 100;
 
 
-            List<List<int>> population = Enumerable.Range(0, populationSize)
+            List<List<int>> population = Enumerable.Range(0, (int)populationSize)
                 .Select(_ => GenerateRandomIndividual(individualLength))
                 .ToList();
 
@@ -91,8 +91,7 @@ namespace GeneticAlgorithm
                 if (sum >= randomValue)
                     return i;
             }
-
-            //return fitnessScores.Count - 1;
+            return fitnessScores.Count - 1;
         }
 
     }
